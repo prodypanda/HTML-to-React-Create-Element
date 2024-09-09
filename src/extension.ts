@@ -44,6 +44,7 @@ function convertToReactCreateElement(html: string): string {
     return convert(root);
 }
 
+
 let statusBarItem: vscode.StatusBarItem;
 let outputChannel: vscode.OutputChannel;
 
