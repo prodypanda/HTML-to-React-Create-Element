@@ -1,0 +1,18 @@
+# Dependency directories
+node_modules/
+
+# Compiled output
+out/
+
+# VSCode directories
+.vscode-test/
+
+# Logs
+*.log
+
+# Operating System Files
+.DS_Store
+Thumbs.db
+
+# npm package files
+package-lock.json
