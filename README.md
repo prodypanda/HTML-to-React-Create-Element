@@ -51,7 +51,7 @@ This extension requires Visual Studio Code version 1.60.0 or higher.
 
 ## Known Issues
 
-Please report any issues or feature requests on the [GitHub repository](https://github.com/your-username/vscode-html-to-react-converter/issues).
+Please report any issues or feature requests on the [GitHub repository](https://github.com/prodypanda/HTML-to-React-Create-Element/issues).
 
 ## Release Notes
 
