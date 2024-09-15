@@ -152,14 +152,17 @@ function convertToReactCreateElement(input: string): string {
                 }, {});
                 props.push(`${childIndent}style: ${JSON.stringify(styles)}`);
             } else {
-                // Handle custom attributes with hyphens
                 let propName = name;
-                if (isSvgElement || name.includes(':') || name.includes('-')) {
-                    propName = SVG_ATTR_MAP[name] || name.replace(/[-:](.)/g, (_, char) => char.toUpperCase());
+                let propValue: string | boolean = value;
+
+                // Handle custom attributes with hyphens
+                if (name.includes('-')) {
+                    propName = `'${name}'`; // Enclose in apostrophes
+                } else if (isSvgElement || name.includes(':')) {
+                    propName = SVG_ATTR_MAP[name] || name.replace(/[:]/g, char => char.toUpperCase());
                 }
                 
                 // Convert boolean strings to actual booleans
-                let propValue: string | boolean = value;
                 if (value === 'true' || value === 'false') {
                     propValue = value === 'true';
                 }
@@ -179,7 +182,8 @@ function convertToReactCreateElement(input: string): string {
         } else {
             return `${indent}React.createElement(${tagName}, {\n${props.join(',\n')}\n${indent}},\n${children.join(',\n')}\n${indent})`;
         }
-    }    
+    }
+    
     try {
         return convert(root).trim();
     } catch (error: unknown) {
